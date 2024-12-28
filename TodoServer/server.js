@@ -5,13 +5,13 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const PORT = 4040;
+const PORT = process.env.PORT || 4040;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
 
-mongoose.connect("mongodb://localhost:27017/Todo", {
+mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/JobApply", {
   dbName: 'ToDo'
 })
 
@@ -67,6 +67,10 @@ app.get('/todo-get', async (req, res) => {
     });
   }
 })
+
+app.get('/', async (req, res) => {
+  res.send("connected successfully");
+});
 
 app.delete('/todo-delete/:id', async (req, res) => {
   try {
