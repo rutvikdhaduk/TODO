@@ -11,8 +11,10 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 
-mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/JobApply", {
-  dbName: 'ToDo'
+mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/ToDo", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  dbName: 'ToDo',
 })
 
 const db = mongoose.connection
