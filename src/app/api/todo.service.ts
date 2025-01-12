@@ -19,7 +19,6 @@ export class TodoService {
   deleteTodo(id) {
     this.http.delete(`${this.url}/${id}`)
   }
-
 }
 
 export class Todo {

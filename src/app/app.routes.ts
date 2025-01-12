@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { TodoAddComponent } from './todo-add/todo-add.component';
 
 export const routes: Routes = [
   {
@@ -8,7 +7,11 @@ export const routes: Routes = [
     pathMatch:'full'
   },
   {
-    path:'task',
-    component:TodoAddComponent
-  }
+    path: 'task',
+    loadComponent: () => import('./component/add-todo/add-todo.component').then(m => m.AddTodoComponent)
+  },
+  {
+    path: 'data',
+    loadComponent: () => import('./component/show-todo/show-todo.component').then(m => m.ShowTodoComponent)
+  },
 ];
